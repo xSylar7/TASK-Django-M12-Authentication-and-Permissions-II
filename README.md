@@ -65,3 +65,16 @@ Haven't seen a movie in a while?
 8. Try out the `login` form.
 9. Commit your code.
 10. Push your code.
+
+## Permissions
+
+1. Add `LOGIN_URL` to your `settings.py` to equal to whatever path you've added as your `login` (read more about this [here](https://docs.djangoproject.com/en/4.0/ref/settings/#login-url)).
+2. We want to add an `anchor` tag to our `create-movie` link (the view and template have already been created).
+   - Add this link in the `movie-list` page somewhere, but add a conditional in the template so that it only appears if the user logs in
+3. Try going to the link directly (e.g., `http://localhost:8000/movies/add/`), and you'll notice that users are still able to go to it.
+4. Add a `login_required` decorator to `create_movie` view in `movies/views.py`.
+   - Read about the decorator [here](https://docs.djangoproject.com/en/4.0/topics/auth/default/#the-login-required-decorator)
+
+### Permissions Bonus
+
+If you go `movies/views.py` and see the `create_movie` view, you'll notice a _bonus_ comment. If you tried to create a movie, even if you're logged in, it won't actually work. The reason is because the `form` expects to have `created_by` injected it into it during runtime. What we will need to do is add the `request.user` to the form defaults for `created_by`, so that our view will work. Read about form defaults [here](https://docs.djangoproject.com/en/4.0/ref/forms/api/#initial-form-values).

@@ -32,6 +32,8 @@ def get_movie(request: HttpRequest, movie_id: int) -> HttpResponse:
 def create_movie(request: HttpRequest) -> HttpResponse:
     form = forms.MovieForm()
     if request.method == "POST":
+        # BONUS: This needs to have the `user` injected in the constructor
+        # somehow
         form = forms.MovieForm(request.POST)
         if form.is_valid():
             form.save()
