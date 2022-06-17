@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Awesome Movies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">CodedDB</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}">
+              Home <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="bg-light h-100">
+      <article class="container">
+        <h1>Movies</h1>
+        {% if movies %}
+        <section class="row row-cols-1 row-cols-md-2">
+          {% for movie in movies %}
+          <div class="col mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ movie.name }} by {{ movie.author.first_name }} {{
+                  movie.author.last_name }}
+                </h5>
+                <p class="card-text text-truncate" style="max-width: 30ch">
+                  {{ movie.plot }}
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </section>
+        {% else %}
+        <p>Seems like no movies are any good nowadays :(</p>
+        {% endif %}
+      </article>
+    </main>
+
+    <footer class="mt-auto text-center py-2">
+      Awesome movies since like forever!
+    </footer>
+  </body>
+</html>
