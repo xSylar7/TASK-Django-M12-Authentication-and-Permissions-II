@@ -1,8 +1,8 @@
 from django.db import OperationalError
 from django.http import Http404, HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
-from movies import models
+from movies import forms, models
 
 
 def get_movies(request: HttpRequest) -> HttpResponse:
@@ -27,3 +27,18 @@ def get_movie(request: HttpRequest, movie_id: int) -> HttpResponse:
         "movie": movie,
     }
     return render(request, "movie_detail.html", context)
+
+
+def create_movie(request: HttpRequest) -> HttpResponse:
+    form = forms.MovieForm()
+    if request.method == "POST":
+        form = forms.MovieForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "create_movie.html", context)

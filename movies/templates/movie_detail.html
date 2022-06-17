@@ -54,6 +54,10 @@
           movie.author.last_name }}
         </h1>
         <p class="card-text">{{ movie.plot }}</p>
+        <p class="card-text">
+          Created by: {{ movie.created_by.first_name }} {{
+          movie.created_by.last_name }}
+        </p>
       </article>
     </main>
 

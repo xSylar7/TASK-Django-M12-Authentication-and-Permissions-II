@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 from movies import views as movie_views
 from shared import views as shared_views
 
@@ -24,4 +23,5 @@ urlpatterns = [
     path("home/", shared_views.home, name="home"),
     path("movies/", movie_views.get_movies, name="movie-list"),
     path("movies/<int:movie_id>/", movie_views.get_movie, name="movie-detail"),
+    path("movies/add", movie_views.create_movie, name="create-movie"),
 ]
