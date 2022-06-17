@@ -28,5 +28,5 @@ Haven't seen a movie in a while?
    - `Render` a template called `register.html`
 7. Add your `register_user` view to `urls.py` and name it `register`.
 8. Add the `register.html` template to `users/templates`.
-9. We have no way right now to tell that we are registered and logged in other than trying to register again and failing. We will see how to make it visible to the user that they're logged in in the upcoming tasks.
-10. Commit and push your changes.
+9. Add a link to `register` in the navbar of `shared/templates/home.html` and `movies/template/movie_list.html`.
+10. We have no way right now to tell that we are registered and logged in other than trying to register again and failing. We will see how to make it visible to the user that they're logged in in the upcoming tasks. Commit and push your changes.
