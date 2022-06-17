@@ -31,3 +31,12 @@ Haven't seen a movie in a while?
 8. Add the `register.html` template to `users/templates`.
 9. Add a link to `register` in the navbar of `shared/templates/home.html` and `movies/template/movie_list.html`.
 10. We have no way right now to tell that we are registered and logged in other than trying to register again and failing. We will see how to make it visible to the user that they're logged in in the upcoming task. Commit and push your changes.
+
+## Logout
+
+1. Add a `logout_user` view that uses the `logout` [helper](https://docs.djangoproject.com/en/4.0/topics/auth/default/#how-to-log-a-user-out) from `Django`.
+2. Add the `logout_user` view to `urls.py` with the name `logout`.
+3. Add a conditional in the navbars (`shared/templates/home.html`, `movies/templates/movie_list.html`, etc...) that checks if the `user` is `authenticated`.
+   - If the user is authenticated then show the `anchor` tag that will log them out
+   - Else show the registration link
+4. Commit and push your code.
