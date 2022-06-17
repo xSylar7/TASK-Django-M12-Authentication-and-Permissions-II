@@ -11,7 +11,7 @@ Haven't seen a movie in a while?
 
 1. Create a new app called `users` and create a `User` model that inherits from `django.contrib.auth.models.AbstractUser` and just `pass`es.
 2. Go to `settings.py` and add `AUTH_USER_MODEL = "users.User"`, where `users` is that app name and `User` is the class name we chose for our custom `User` model.
-3. Make migrations and migrate by running the following command `./manage.py makemigrations users && ./manage.py migrate`.
+3. Make migrations and migrate.
    - Do not run `makemigrations` regularly because we want to delay migrating the `movies` app
 4. Add a `forms.py` file inside of your `users` app.
 5. Add a `RegistrationForm` model form.
