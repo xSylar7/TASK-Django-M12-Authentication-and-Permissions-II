@@ -49,34 +49,11 @@
 
     <main class="bg-light h-100">
       <article class="container">
-        <h1>Movies</h1>
-        {% if movies %}
-        <section class="row row-cols-1 row-cols-md-2">
-          {% for movie in movies %}
-          <div class="col mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  {{ movie.name }} by {{ movie.author.first_name }} {{
-                  movie.author.last_name }}
-                </h5>
-                <p class="card-text text-truncate" style="max-width: 30ch">
-                  {{ movie.plot }}
-                </p>
-                <a
-                  href="{% url 'movie-detail' movie_id=movie.id %}"
-                  class="btn btn-link"
-                >
-                  See all details
-                </a>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </section>
-        {% else %}
-        <p>Seems like no movies are any good nowadays :(</p>
-        {% endif %}
+        <h1 class="card-title">
+          {{ movie.name }} by {{ movie.author.first_name }} {{
+          movie.author.last_name }}
+        </h1>
+        <p class="card-text">{{ movie.plot }}</p>
       </article>
     </main>
 
