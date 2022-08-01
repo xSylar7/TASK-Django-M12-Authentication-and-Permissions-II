@@ -9,8 +9,7 @@ Haven't seen a movie for a while?
 
 ## Registration
 
-1. Create a new app called `users` and create a `User` model that inherits from `django.contrib.auth.models.AbstractUser`, and just `pass`es.
-<!-- just `pass`es? -->
+1. Create a new app called `users` and create a `User` model that inherits from `django.contrib.auth.models.AbstractUser`, and just has a `pass` statement ([read more here](https://www.programiz.com/python-programming/pass-statement)).
 2. Go to `settings.py` and add `AUTH_USER_MODEL = "users.User"`, where `users` is the app name and `User` is the class name we chose for our custom `User` model.
 3. Make migrations and migrate.
    - Do not run `makemigrations` regularly because we want to delay migrating the `movies` app.
