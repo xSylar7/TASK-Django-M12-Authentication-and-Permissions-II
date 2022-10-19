@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 
-from movies import models
+from movies.models import Movie
 
 User = get_user_model()
 
@@ -13,5 +13,5 @@ class MovieForm(forms.ModelForm):
     )
 
     class Meta:
-        model = models.Movie
+        model = Movie
         fields = ["name", "plot", "created_by"]
