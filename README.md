@@ -9,15 +9,12 @@ Haven't seen a movie for a while?
 
 ## Registration
 
-1. Create a new app called `users` and create a `User` model that inherits from `django.contrib.auth.models.AbstractUser`, and just has a `pass` statement ([read more here](https://www.programiz.com/python-programming/pass-statement)).
-2. Go to `settings.py` and add `AUTH_USER_MODEL = "users.User"`, where `users` is the app name and `User` is the class name we chose for our custom `User` model.
-3. Make migrations and migrate.
-   - Do not run `makemigrations` regularly because we want to delay migrating the `movies` app.
-4. Add a `forms.py` file inside of your `users` app.
-5. Add a `RegistrationForm` model form.
+1. Create a new app called `users`. We will use it for the register, sign in and sign out.
+2. Add a `forms.py` file inside of your `users` app.
+3. Add a `RegistrationForm` model form.
    - Make sure to set the model equal to `User`, but do not import your `User` model directly (use `Django`'s helper `get_user_model`, which you can read about [here](https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#referencing-the-user-model)).
    - Add a widget for the password field to be hidden (you can read about widgets [here](https://docs.djangoproject.com/en/4.0/ref/forms/widgets/)).
-6. Add your `register_user` view in `users/views.py`.
+4. Add your `register_user` view in `users/views.py`.
    - Create a new instance of your `RegistrationForm`.
    - Check if the `request method` is `POST`. If so, create a new instance of `RegistrationForm` with the first argument passed as `request.POST`.
      - Check if the `form` is `valid`. If so, save the form, but do not commit (i.e., `commit=False`), and assign the return to a variable called `user`.
@@ -27,10 +24,10 @@ Haven't seen a movie for a while?
      - `Redirect` to `home`.
    - Create your `context` and add your `form` instance to it.
    - `Render` a template called `register.html`.
-7. Add your `register_user` view to `urls.py` and name it `register`.
-8. Add the `register.html` template to `users/templates` (you can use `crispy forms` and `bootstrap` to prettify it).
-9. Add a link to `register` in the navbar of `shared/templates/home.html` and `movies/template/movie_list.html`.
-10. Right now, we have no way to tell that we are registered and logged in other than trying to register again and failing. We will see how we can make it visible to the users that they're logged in in the upcoming task. Commit and push your changes.
+5. Add your `register_user` view to `urls.py` and name it `register`.
+6. Add the `register.html` template to `users/templates` (you can use `crispy forms` and `bootstrap` to prettify it).
+7. Add a link to `register` in the navbar of `shared/templates/home.html` and `movies/template/movie_list.html`.
+8. Right now, we have no way to tell that we are registered and logged in other than trying to register again and failing. We will see how we can make it visible to the users that they're logged in in the upcoming task. Commit and push your changes.
 
 ## Logout
 
@@ -74,6 +71,7 @@ Haven't seen a movie for a while?
 4. Add a `login_required` decorator to `create_movie` view in `movies/views.py`.
    - Read about the decorator [here](https://docs.djangoproject.com/en/4.0/topics/auth/default/#the-login-required-decorator).
 
-### Permissions Bonus
+### Bonus
 
-If you go to `movies/views.py` and see the `create_movie` view, you'll notice a _bonus_ comment. If you try to create a movie, even if you're logged in, it won't actually work. The reason is that the `form` expects to have `created_by` injected into it during runtime. We need to add the `request.user` to the form defaults for `created_by` in order for our view to work. Read about form defaults [here](https://docs.djangoproject.com/en/4.0/ref/forms/api/#initial-form-values).
+1. If you go to `movies/views.py` and see the `create_movie` view, you'll notice a _bonus_ comment. If you try to create a movie, even if you're logged in, it won't actually work. The reason is that the `form` expects to have `created_by` injected into it during runtime. We need to add the `request.user` to the form defaults for `created_by` in order for our view to work. Read about form defaults [here](https://docs.djangoproject.com/en/4.0/ref/forms/api/#initial-form-values).
+2. Customize your `User` model by inheriting from `django.contrib.auth.models.AbstractUser`. Go to `settings.py` and add `AUTH_USER_MODEL = "users.User"`, where `users` is the app name and `User` is the class name we chose for our custom `User` model. Don't forget to make migrations and migrate.
