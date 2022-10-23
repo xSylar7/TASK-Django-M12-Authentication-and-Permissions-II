@@ -25,5 +25,6 @@ urlpatterns = [
     path("movies/", movie_views.get_movies, name="movie-list"),
     path("movies/<int:movie_id>/", movie_views.get_movie, name="movie-detail"),
     path("movies/add/", movie_views.create_movie, name="create-movie"),
-    path("users/signup/", user_views.user_sign_up, name="user-signup")
+    path("users/signup/", user_views.user_sign_up, name="user-signup"),
+    path("users/logout/", user_views.user_logout, name="user-logout"),
 ]

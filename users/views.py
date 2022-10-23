@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from users.forms import UserSignupForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 # Create your views here.
 
@@ -22,3 +22,8 @@ def user_sign_up(request):
         'form': form,
     }
     return render(request, 'user_signup.html', context)
+
+
+def user_logout(request):
+    logout(request)
+    return redirect("home")
